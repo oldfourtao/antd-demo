@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>apply.call.bind区别</div>
+</body>
+
+<script>
+
+    Function.prototype.call = function(obj,...args){
+        console.log('new call')
+        if(obj === null || obj === undefined){
+            obj = window;
+        }
+        obj.tempFun = this;
+        const result = obj.tempFun(obj,...args);
+        delete obj.tempFun;
+        return result;
+    }
+
+    // Function.prototype.bind = function(obj,...args){
+
+    // }
+   
+    function fun(a,b){
+        console.log(a,b);
+        console.log(arguments);
+        console.log(this);
+    }
+
+    fun.call(this,1,2);
+
+    fun.bind(this,1,2)(3,4);
+</script>
+</html>
