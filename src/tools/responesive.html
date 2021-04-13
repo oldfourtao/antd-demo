@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue响应式原理</title>
+    <style>
+        html,body{
+            height: 100%;
+        }
+        #box1,#box2{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script src="./index.model.js"></script>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+<script>
+    let data = {};
+    responsiveFn({data:data,tag:'view1',key:'box1',selector:'#box1'});
+    responsiveFn({data:data,tag:'view1',key:'box2',selector:'#box2'});
+    data.box1 = "数据响一声box1";
+    data.box2 = "数据响应式box2";
+</script>
+</html>

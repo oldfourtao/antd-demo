@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+        body{
+            display: flex;
+        }
+        .box{
+            width: 300px;
+            height: 200px;
+            background: red;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    <!-- 
+        弹性布局远离： 屏幕宽-基础宽剩下的平均分配
+     -->
+</head>
+<body>
+    <div class="box">
+        <span>text  aligin</span>
+        <input type="text" id="username"></input>
+        <span id="uname"></span>
+    </div>
+</body>
+
+<script>
+    let obj = {};
+    Object.defineProperty(obj,'username',{
+        get:()=>{
+            console.log('获取属性');
+        },
+        set:(val)=>{
+            
+            document.getElementById('uname').innerHTML = val;
+        }
+    });
+
+    document.getElementById('username').addEventListener('keyup',(event)=>{
+        console.log(event.target.value);
+        obj.username = event.target.value;
+    })
+</script>
+</html>

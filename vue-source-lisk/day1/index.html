@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模版引擎解析</title>
+</head>
+<body>
+
+    <div id="root">
+        <p>{{name}}</p>
+        <p>{{message}}</p>
+    </div>
+    
+</body>
+
+<script>
+
+    //1 获取模块
+    let elTemplate = document.querySelector('#root');
+    //2 获取数据
+    let data = {
+        name: '张三',
+        message: '测试模版解析'
+    }
+    //3 根据模块解析 数据绑定 渲染
+    let compiler = function(template,data) {
+        let childNodes = template.childNodes;//获取dom元素子节点
+        for(let i = 0; i< childNodes.length; i++ ){
+            let type = childNodes[i].nodeType;//获取元素类型type == 3 文本 type == 1元素
+            if(type === 3){
+                //解析文本
+                let regxKh = /\{\{(.+?)\}\}/g;
+                let text = childNodes[i].nodeValue;
+                text = text.replace(regxKh,function( _, g ) {
+                    console.log(g);
+                    let value = g.trim();
+                    value = data[value];
+                    return value;
+                })
+                childNodes[i].nodeValue = text;
+            }else if(type === 1){
+                //递归获取文本
+                compiler(childNodes[i],data)
+            }
+        }
+    }
+
+    compiler(elTemplate,data);
+
+</script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script >
+    //构造函数是否用它创建实li
+    function Person(){
+
+    }
+
+    Person.prototype.name = "小明";
+    Person.prototype.age = 18;
+    Person.prototype.getAge = function(){
+        console.log(this.age);
+        return this.age;
+    }
+    //constrctor 构造器 指向构造函数
+    let person = new Person();
+    person.name = '字节';
+    console.log(person.name);
+    console.log(person)
+
+    //原型链查找规则 自下而上，沿着原型链 __proto__一层一层往上找，直到null 如果没找到，则undefined，hasOwnProprety(验证属性是来自于继承)
+
+
+    //闭包解析
+    let a = "闭包解析";//定义外部的全局变量
+    function fun1(){
+        let b =1;//定义在函数的局部变量，函数执行完毕后会被垃圾回收 AO(active object),临时对象
+        console.log(a);
+    }
+    fun1();
+
+
+    function  task(fn,delay) {
+        let timeoutid = null;
+        return args=>{
+            if(timeoutid) clearTimeout (timeoutid);
+            timeoutid = setTimeout(fn,delay);
+        }
+    }
+
+    //使用场景 模块化
+    
+</script>
+
+<body>
+    
+</body>
+</html>l
