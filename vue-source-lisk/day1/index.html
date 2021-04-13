@@ -31,15 +31,16 @@
             let type = childNodes[i].nodeType;//获取元素类型type == 3 文本 type == 1元素
             if(type === 3){
                 //解析文本
-                let regxKh = /\{\{(.+?)\}\}/g;
-                let text = childNodes[i].nodeValue;
+                let regxKh = /\{\{(.+?)\}\}/g ; //匹配{{}}内容
+                let text = childNodes[i].nodeValue;//获取元素
+                //正则替换
                 text = text.replace(regxKh,function( _, g ) {
                     console.log(g);
-                    let value = g.trim();
-                    value = data[value];
+                    let key = g.trim();//去除两端空格
+                    let value = data[key];//获取值
                     return value;
                 })
-                childNodes[i].nodeValue = text;
+                childNodes[i].nodeValue = text;//重新给dom元素赋值
             }else if(type === 1){
                 //递归获取文本
                 compiler(childNodes[i],data)
