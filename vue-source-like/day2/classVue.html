@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./classVue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <p>{{name}}-{{message}}</p>
+        <p>{{name}}</p>
+        <p>{{message}}</p>
+        <p>
+            <span>数学：{{score.math}}</span>
+            <span>英语：{{score.english}}</span>
+        </p>
+    </div>
+</body>
+<script>
+    let appVUE = new ZTVue({
+        el: '#root',
+        data: {
+            name: 'zhansgan',
+            message: '自定义vue',
+            score: {
+                math: 98,
+                english: 98
+            }
+        }
+    })
+    console.log(appVUE);
+    appVUE._render();
+</script>
+
+</html>
