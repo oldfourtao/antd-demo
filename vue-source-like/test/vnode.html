@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试vnode</title>
+    <script src="../js/VNode.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div class="tt1" title="node1">node 1</div>
+        <div>node 2</div>
+        <div class="abc kkji">node3</div>
+        <ul class="foo" foo="123">
+            <li id="li1">li1</li>
+            <li>li2</li>
+            <li>li3</li>
+        </ul>
+    </div>
+</body>
+<script>
+    let node = document.querySelector( '#root' );
+    let vnode = _getVNode(node);
+   // console.log("get vnode",vnode)
+    let realDom = _getRealDom(vnode);
+    console.log(realDom);
+</script>
+</html>
