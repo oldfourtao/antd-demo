@@ -73,7 +73,7 @@ let _getRealDom = function(vnode){
         childNodes.forEach((subNode) => {
             _node.appendChild( _getRealDom(subNode) );//递归创建子节点
         })
-
+        console.log()
         return _node;
     }
 }
